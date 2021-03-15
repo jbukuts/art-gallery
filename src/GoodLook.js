@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './InDepth.css';
 import $ from 'jquery';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Draggable from 'react-draggable';
@@ -71,8 +72,10 @@ class GoodLook extends React.Component {
       // add properties to section as needed
       let addProperties = (properties) => {
         return properties.map(x => {
+          const pStyle = {marginBottom: '2px', marginTop: '2px', marginLeft: "30px"};
+          const innerProp = `${(x[0].length > 0) ? `${x[0]}: ` : ''}  ${x[1]}`;
           return ( x[1] &&
-            <p style={{marginBottom: '2px', marginTop: '2px', marginLeft: "30px"}}>{x[0].length > 0 ? `${x[0]}: ` : ''}{x[1]}</p>
+            <p style={pStyle} dangerouslySetInnerHTML={{__html: innerProp}}></p>
           )
         });
       }
@@ -81,7 +84,7 @@ class GoodLook extends React.Component {
       let createSections = (sections) => {
         return sections.map(x => {
 
-          const areThere = x.properties? x.properties.reduce((acc, cur) => { return !acc ? acc : (cur[1] ? true : false)}, true) : false;
+          const areThere = x.properties ? x.properties.reduce((acc, cur) => { return acc ? acc : (cur[1] ? true : false)}, false) : false;
 
           return ( 
             <div>

@@ -20,13 +20,12 @@ class App extends React.Component {
     this.flipImages = this.flipImages.bind(this)
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     // key listener
     await this.setState({
       imageList: await CreateImageCollage(this, this.state.isLocal)
     });
 
-    console.log(this.state.imageList);
     window.addEventListener('keydown', this.downHandler);
   }
 
@@ -58,11 +57,11 @@ class App extends React.Component {
   }
 
   // pull images from MET or local
-  async flipImages() {
+  async flipImages(newState) {
     console.log('flip images');
 
     const photos = $('#photos');
-    $('body').css('overflow', 'hidden');
+    $('body').css('overflow', 'hidden').css('pointer-events', 'none');
 
     await photos.fadeTo('1s', 0, async () => {
       const loading = $('#loading');
@@ -72,12 +71,12 @@ class App extends React.Component {
 
       console.log('tes');
       this.setState({
-          imageList: await CreateImageCollage(this, !this.state.isLocal),
-          isLocal: !this.state.isLocal
+          imageList: await CreateImageCollage(this, newState),
+          isLocal: newState
         }, 
         ()=> {
           loading.fadeTo('.25s', 0, () => {loading.css('display', 'none')});
-          photos.fadeIn("slow").delay(800).fadeTo('1s', 1, ()=> $('body').css('overflow', 'auto'));
+          photos.fadeIn("slow").delay(800).fadeTo('1s', 1, ()=> $('body').css('overflow', 'auto').css('pointer-events', 'all'));
         }
       );
     });
@@ -121,15 +120,18 @@ class App extends React.Component {
           Thought it'd be nice to see them all in one place.<br/>
           I do not own any of them of course.
         </p>
-        <button onClick={this.flipImages}>Pull from MET</button>
+
+        {/* buttons to pull from MET */}
+        <button onClick={() => this.flipImages(!this.state.isLocal)}>{this.state.isLocal ? 'Random MET' : 'Back to Mine'}</button>
+        {!this.state.isLocal && <button onClick={() => this.flipImages(this.state.isLocal)}>Get different from MET</button>}
 
         <br/>
         <br/>
 
-        
+        {/* beach ball loading for the page */}
         <div id="loading">
           <div>
-            <img src={`${process.env.PUBLIC_URL}/assets/spinning-ball.png`}/>
+            <img src={`${process.env.PUBLIC_URL}/assets/spinning-ball.png`} alt=""/>
           </div>
           <h2>Loading Photos</h2>
         </div>
@@ -140,7 +142,7 @@ class App extends React.Component {
           {this.state.imageList && this.state.imageList.map(x => x[0])}
         </div>
 
-
+        {/* footer of the page */}
         <div id="footer">
           { !this.state.isLocal && <div>
             <img style={{width: '100px' , height: '100px'}} src={`${process.env.PUBLIC_URL}/assets/MetLogo.svg`} alt="Thank you to the MET" height={'100'} width={'100'}/>
@@ -157,19 +159,7 @@ class App extends React.Component {
 
 // create the image collage
 async function CreateImageCollage(thing, isLocal) {
-
-  // only one work per artist
-  var clonedArray = JSON.parse(JSON.stringify(art))
-
-  const filteredArr = shuffleArray(clonedArray).reduce((acc, current) => {
-    const x = acc.find(item => item.artist === current.artist);
-      return !x ? acc.concat([current]) : acc;
-  }, []).map(x => {x.file_name = `${process.env.PUBLIC_URL}/assets/art/${x.file_name}`; return x});
-  
-  const imageList =  isLocal ? filteredArr : await getRandomArtList();
-  console.log(imageList);
-  console.log(art);
-
+  const imageList =  isLocal ? getLocalArtList() : await getRandomArtList();
   return imageList.map(
     (x,i) => {
       return [createSingleImage(x,i,thing), x]
@@ -197,6 +187,17 @@ function createSingleImage(x,i, thing) {
     </div>
   )
 }
+
+function getLocalArtList() {
+  // only one work per artist
+  var clonedArray = JSON.parse(JSON.stringify(art))
+
+  return shuffleArray(clonedArray).reduce((acc, current) => {
+    const x = acc.find(item => item.artist === current.artist);
+      return !x ? acc.concat([current]) : acc;
+  }, []).map(x => {x.file_name = `${process.env.PUBLIC_URL}/assets/art/${x.file_name}`; return x});
+}
+
 
 // pull random image data from the MET 
 async function getRandomArtList() {

@@ -22,7 +22,8 @@
         "file_name"  : "1dust_for_print.jpg",
         "date" : 2002,
         "classification": "Oil on MDF",
-        "dimensions": "41 x 49 cm"
+        "dimensions": "41 x 49 cm",
+        "comments": "Zetterstrand was inspired by the free camera view in Counterstrike when creating this"
     },
     {
         "title" : "de_aztec",
@@ -30,7 +31,8 @@
         "file_name"  : "2aztbig.jpg",
         "date" : 2002,
         "classification": "Oil on canvas",
-        "dimensions": "103 x 103 cm"
+        "dimensions": "103 x 103 cm",
+        "comments": "Zetterstrand was inspired by the free camera view in Counterstrike when creating this"
     },
     {
         "title" : "Overcast",
@@ -54,7 +56,8 @@
         "file_name"  : "officeinsmallcity.jpeg",
         "date" : 1953,
         "classification": "Oil on canvas",
-        "dimensions": "71 x 102 cm"
+        "dimensions": "71 x 102 cm",
+        "comments": "Windows were ignored"
     },
     {
         "title" : "Nihon Buyo",
@@ -70,7 +73,8 @@
         "file_name"  : "1280px-David_-_The_Death_of_Socrates.jpg",
         "date" : 1787,
         "classification": "Oil on canvas",
-        "dimensions": "129.5 x 196.2 cm"
+        "dimensions": "129.5 x 196.2 cm",
+        "comments": "The somber old man at the foot of the bed is thought to be Plato, however, his age at the time of this event would've been that of young man.<br/><br/>An interpretation of this innaccuracy could be the painting represents Plato himself recalling the event in old age. Sitting in anguish as the scene explodes from the back of his mind."
     },
     {
         "title" : "John Fitzgerald Kennedy",
@@ -78,7 +82,8 @@
         "file_name"  : "John_F_Kennedy_Official_Portrait.jpg",
         "date" : 1970,
         "classification": "Oil on canvas",
-        "dimensions": "86.36 x 127 cm"
+        "dimensions": "86.36 x 127 cm",
+        "comments": "Shikler based the pose of the painting on image of a grieving Ted Kennedy.<br/><br/>The lack of eyes in the portrait is Shikler's personal choice to not paint the eyes of a dead man."
     },
     {
         "title" : "Klaxton",
@@ -191,7 +196,8 @@
         "file_name"  : "Utah_teapot_simple_2.png",
         "date" : 1975,
         "classification": "Digital",
-        "dimensions": "None"
+        "dimensions": "None",
+        "comments": "Also known as the 5th platonic solid"
     },
     {
         "title" : "Fallingwater",
@@ -206,7 +212,8 @@
         "file_name"  : "keithharing.jpg",
         "date" : 1988,
         "classification": "Acrylic on canvas",
-        "dimensions": "270 x 300 cm"
+        "dimensions": "270 x 300 cm",
+        "comments": "Haring made this to memorialize his friend, artist Jean-Michel Basquiat."
     },
     {
         "title" : "Barrack Obama",
