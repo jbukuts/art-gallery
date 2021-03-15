@@ -109,12 +109,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{width: '85%', margin: 'auto', position: 'relative'}} >
+      <div style={{width: '80%', margin: 'auto', position: 'relative'}} >
         {/* if click on image show the detailed view */}
         {this.state.showGoodLook && <GoodLook focusImage={this.state.imageFocus} handleRemove={this.removeGoodLook}/>}
         
         {/* Just a simple header */}
-        <h1 style={{fontSize: '40px', marginBottom: '5px'}}>The Gallery</h1>
+        <span>
+          {/**<img src={`${process.env.PUBLIC_URL}/assets/folder.png`} style={{float: 'left', width: '65px'}}/>**/}
+          <h1 style={{fontSize: '40px', marginBottom: '5px', paddingTop: '10px'}}>The Gallery</h1>
+        </span>
+        
         <p style={{marginTop: '0px'}}>
           This is just a collection of art I like.<br/>
           Thought it'd be nice to see them all in one place.<br/>
