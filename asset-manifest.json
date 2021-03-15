@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/art-gallery/static/css/main.da50a8a0.chunk.css",
+    "main.js": "/art-gallery/static/js/main.450e484e.chunk.js",
+    "main.js.map": "/art-gallery/static/js/main.450e484e.chunk.js.map",
+    "runtime-main.js": "/art-gallery/static/js/runtime-main.9a0cee96.js",
+    "runtime-main.js.map": "/art-gallery/static/js/runtime-main.9a0cee96.js.map",
+    "static/js/2.6f69c54e.chunk.js": "/art-gallery/static/js/2.6f69c54e.chunk.js",
+    "static/js/2.6f69c54e.chunk.js.map": "/art-gallery/static/js/2.6f69c54e.chunk.js.map",
+    "index.html": "/art-gallery/index.html",
+    "static/css/main.da50a8a0.chunk.css.map": "/art-gallery/static/css/main.da50a8a0.chunk.css.map",
+    "static/js/2.6f69c54e.chunk.js.LICENSE.txt": "/art-gallery/static/js/2.6f69c54e.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/art-gallery/static/media/HelveticaNeueLTCom-Md.5b8241ad.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9a0cee96.js",
+    "static/js/2.6f69c54e.chunk.js",
+    "static/css/main.da50a8a0.chunk.css",
+    "static/js/main.450e484e.chunk.js"
+  ]
+}
