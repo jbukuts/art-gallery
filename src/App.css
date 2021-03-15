@@ -85,14 +85,15 @@ button {
   color: white;
   border: 1px solid #1b6bf9;
   margin-right: 10px;
+  transition: .25s opacity;
 }
 
 button:hover {
   cursor: pointer;
 }
 
-button:active {
-  border: 1px solid #1b6bf9;
+button:disabled {
+  opacity: .35;
 }
 
 /** a single div containg piece **/
@@ -236,8 +237,8 @@ button:active {
 #loading > div::before {
   border-radius:50%;
   box-shadow: 5px 5px 10px rgb(0, 0, 0, 1);
-  width: 150px;
-  height: 150px;
+  width: 70px;
+  height: 70px;
   top: 0; right: 0; left: 0;
   z-index: 100;
   content: "";
@@ -248,15 +249,15 @@ button:active {
 
 /** spinning beach ball **/
 #loading img {
-  width: 150px;
+  width: 70px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  -webkit-animation: rotating 2s linear infinite;
-  -moz-animation: rotating 2s linear infinite;
-  -ms-animation: rotating 2s linear infinite;
-  -o-animation: rotating 2s linear infinite;
-  animation: rotating 2s linear infinite;
+  -webkit-animation: rotating .6s linear infinite;
+  -moz-animation: rotating .6s linear infinite;
+  -ms-animation: rotating .6s linear infinite;
+  -o-animation: rotating .6s linear infinite;
+  animation: rotating .6s linear infinite;
 }
 
 /** we need the animated ellipsis **/

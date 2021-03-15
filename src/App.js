@@ -58,15 +58,18 @@ class App extends React.Component {
 
   // pull images from MET or local
   async flipImages(newState) {
-    console.log('flip images');
-
     const photos = $('#photos');
     $('body').css('overflow', 'hidden').css('pointer-events', 'none');
+
+    console.log($('.swapButton'));
+
+    $('.swapButton').prop('disabled', true);
 
     await photos.fadeTo('1s', 0, async () => {
       const loading = $('#loading');
       loading.css('display', 'block');
       loading.fadeTo('.25s', 1);
+      
       
 
       console.log('tes');
@@ -76,7 +79,10 @@ class App extends React.Component {
         }, 
         ()=> {
           loading.fadeTo('.25s', 0, () => {loading.css('display', 'none')});
-          photos.fadeIn("slow").delay(800).fadeTo('1s', 1, ()=> $('body').css('overflow', 'auto').css('pointer-events', 'all'));
+          photos.fadeIn("slow").delay(800).fadeTo('1s', 1, () => {
+            $('body').css('overflow', 'auto').css('pointer-events', 'all');
+            $('.swapButton').prop('disabled', false);
+          });
         }
       );
     });
@@ -122,8 +128,8 @@ class App extends React.Component {
         </p>
 
         {/* buttons to pull from MET */}
-        <button onClick={() => this.flipImages(!this.state.isLocal)}>{this.state.isLocal ? 'Random MET' : 'Back to Mine'}</button>
-        {!this.state.isLocal && <button onClick={() => this.flipImages(this.state.isLocal)}>Get different from MET</button>}
+        <button className={'swapButton'} onClick={() => this.flipImages(!this.state.isLocal)}>{this.state.isLocal ? 'Random MET' : 'Back to Mine'}</button>
+        {!this.state.isLocal && <button className={'swapButton'} onClick={() => this.flipImages(this.state.isLocal)}>Get different from MET</button>}
 
         <br/>
         <br/>
