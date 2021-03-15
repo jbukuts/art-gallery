@@ -61,12 +61,25 @@ class App extends React.Component {
   async flipImages() {
     console.log('flip images');
 
-    await $('#photos').fadeTo('1s', 0, async () => {
+    const photos = $('#photos');
+    $('body').css('overflow', 'hidden');
+
+    await photos.fadeTo('1s', 0, async () => {
+      const loading = $('#loading');
+      loading.css('display', 'block');
+      loading.fadeTo('.25s', 1);
+      
+
       console.log('tes');
       this.setState({
-        imageList: await CreateImageCollage(this, !this.state.isLocal),
-        isLocal: !this.state.isLocal
-      }, ()=> {$('#photos').fadeIn("slow").delay(1500).fadeTo('1s', 1)});
+          imageList: await CreateImageCollage(this, !this.state.isLocal),
+          isLocal: !this.state.isLocal
+        }, 
+        ()=> {
+          loading.fadeTo('.25s', 0, () => {loading.css('display', 'none')});
+          photos.fadeIn("slow").delay(800).fadeTo('1s', 1, ()=> $('body').css('overflow', 'auto'));
+        }
+      );
     });
   }
 
@@ -113,20 +126,28 @@ class App extends React.Component {
         <br/>
         <br/>
 
+        
+        <div id="loading">
+          <div>
+            <img src={`${process.env.PUBLIC_URL}/assets/spinning-ball.png`}/>
+          </div>
+          <h2>Loading Photos</h2>
+        </div>
+        
+
         {/* the actual image collage */}
         <div id="photos">
           {this.state.imageList && this.state.imageList.map(x => x[0])}
         </div>
 
 
-        <div id="footer" style={{position: 'relative', width: '100%', height: '100px', marginTop: '25px'}}>
-          <div style={{width: '50%', position: 'absolute', bottom: '0', left: '0', display: 'flex', marginBottom: '5px'}}>
+        <div id="footer">
+          { !this.state.isLocal && <div>
             <img style={{width: '100px' , height: '100px'}} src={`${process.env.PUBLIC_URL}/assets/MetLogo.svg`} alt="Thank you to the MET" height={'100'} width={'100'}/>
-            
-          </div>
+          </div>}
 
-          <div style={{width: '50%', position: 'absolute', bottom: '0', right: '0', textAlign: 'right'}}>
-            <p style={{marginBottom: '0px', fontSize: '14px'}}>Jake Bukuts 2021</p>
+          <div>
+            <p style={{marginBottom: '0px', fontSize: '14px', width: '100%'}}>Jake Bukuts 2021</p>
           </div>
         </div>
       </div>

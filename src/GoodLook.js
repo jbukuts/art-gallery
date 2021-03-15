@@ -87,7 +87,7 @@ class GoodLook extends React.Component {
             <div>
               {sep}
               {header(!areThere, x.name)}
-              {x.properties != null && addProperties(x.properties)}
+              {areThere && addProperties(x.properties)}
             </div>
           )
         });
