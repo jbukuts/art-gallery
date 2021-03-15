@@ -2,10 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Helmet } from 'react-helmet'
 // import reportWebVitals from './reportWebVitals';
+
+const TITLE = "The Gallery";
+document.title = TITLE;
 
 ReactDOM.render(
   <React.StrictMode>
+    <Helmet>
+      <title>{ TITLE }</title>
+    </Helmet>
     <App />
   </React.StrictMode>,
   document.getElementById('root')

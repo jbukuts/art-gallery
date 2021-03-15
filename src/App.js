@@ -60,19 +60,13 @@ class App extends React.Component {
   async flipImages(newState) {
     const photos = $('#photos');
     $('body').css('overflow', 'hidden').css('pointer-events', 'none');
-
-    console.log($('.swapButton'));
-
     $('.swapButton').prop('disabled', true);
 
     await photos.fadeTo('1s', 0, async () => {
       const loading = $('#loading');
       loading.css('display', 'block');
       loading.fadeTo('.25s', 1);
-      
-      
 
-      console.log('tes');
       this.setState({
           imageList: await CreateImageCollage(this, newState),
           isLocal: newState
