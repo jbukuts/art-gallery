@@ -1,0 +1,263 @@
+[
+    {
+        "title" : "What Party",
+        "artist": "KAWS",
+        "file_name"  : "2021_KAWS_WHAT_PARTY_EL196.40_WHAT_PARTY_3826w_600_833.jpg",
+        "date" : 2020,
+        "classification": "Bronze Statue",
+        "dimensions": "228.6 x 110 x 89.9 cm"
+    },
+    {
+        "title" : "Saturn Devouring His Son",
+        "artist": "Francisco Goya",
+        "file_name"  : "Saturn_Devouring_His_Son.jpg",
+        "date" : 1823,
+        "classification": "Oil mural transferred to canvas",
+        "dimensions": "143 x 81 cm",
+        "comments": "Painted in his final years as part of his Black Paintings."
+    },
+    {
+        "title" : "de_dust2",
+        "artist": "Kristoffer Zetterstrand",
+        "file_name"  : "1dust_for_print.jpg",
+        "date" : 2002,
+        "classification": "Oil on MDF",
+        "dimensions": "41 x 49 cm"
+    },
+    {
+        "title" : "de_aztec",
+        "artist": "Kristoffer Zetterstrand",
+        "file_name"  : "2aztbig.jpg",
+        "date" : 2002,
+        "classification": "Oil on canvas",
+        "dimensions": "103 x 103 cm"
+    },
+    {
+        "title" : "Overcast",
+        "artist": "Kristoffer Zetterstrand",
+        "file_name"  : "Overcast.jpg",
+        "date" : 2003,
+        "classification": "Oil on MDF",
+        "dimensions": "61 x 82 cm"
+    },
+    {
+        "title" : "LowMist",
+        "artist": "Kristoffer Zetterstrand",
+        "file_name"  : "LowMist-1.jpg",
+        "date" : 2003,
+        "classification": "Oil on MDF",
+        "dimensions": "61 x 82 cm"
+    },
+    {
+        "title" : "Office in a Small City",
+        "artist": "Edward Hopper",
+        "file_name"  : "officeinsmallcity.jpeg",
+        "date" : 1953,
+        "classification": "Oil on canvas",
+        "dimensions": "71 x 102 cm"
+    },
+    {
+        "title" : "Nihon Buyo",
+        "artist": "Ikko Tanaka",
+        "file_name"  : "cri_000000211749.jpg",
+        "date" : 1953,
+        "classification": "Poster",
+        "dimensions": "103 x 72.8 cm"
+    },
+    {
+        "title" : "The Death of Socrates",
+        "artist": "Jacques-Louis David",
+        "file_name"  : "1280px-David_-_The_Death_of_Socrates.jpg",
+        "date" : 1787,
+        "classification": "Oil on canvas",
+        "dimensions": "129.5 x 196.2 cm"
+    },
+    {
+        "title" : "John Fitzgerald Kennedy",
+        "artist": "Aaron Shikler",
+        "file_name"  : "John_F_Kennedy_Official_Portrait.jpg",
+        "date" : 1970,
+        "classification": "Oil on canvas",
+        "dimensions": "86.36 x 127 cm"
+    },
+    {
+        "title" : "Klaxton",
+        "artist": "Hariton Pushwagner",
+        "file_name"  : "78e1c6c4540a60c42afec4160305a688.jpg",
+        "date" : 1990,
+        "classification": "Ink and acrylic on paper on plate",
+        "dimensions": "210 x 155 cm"
+    },
+    {
+        "title" : "Self-Portrait with Cigarette",
+        "artist": "Edvard Munch",
+        "file_name"  : "self-portrait-with-cigarette.jpg",
+        "date" : 1895,
+        "classification": "Oil on canvas",
+        "dimensions": "110.5 x 85.5 cm"
+    },
+    {
+        "title" : "Life and Death",
+        "artist": "Gustav Klimt",
+        "file_name"  : "1024px-Gustav_Klimt_-_Death_and_Life_-_Google_Art_Project.jpg",
+        "date" : 1915,
+        "classification": "Oil on canvas",
+        "dimensions": "178 x 198 cm"
+    },
+    {
+        "title" : "Drowning Girl",
+        "artist": "Roy Lichtenstein",
+        "file_name"  : "cri_000000237355.jpg",
+        "date" : 1963,
+        "classification": "Oil and synthetic polymer paint on canvas",
+        "dimensions": "171.6 x 169.5 cm"
+    },
+    {
+        "title" : "Study For a Head",
+        "artist": "Francis Bacon",
+        "file_name"  : "download.jpeg",
+        "date" : 1952,
+        "classification": "Oil and sand on canvas",
+        "dimensions": "66 x 56 cm"
+    },
+    {
+        "title" : "Glass Tears",
+        "artist": "Man Ray",
+        "file_name"  : "glass-tears.jpg",
+        "date" : 1932,
+        "classification": "Gelatin silver print",
+        "dimensions": "22.9 x 29.8 cm"
+    },
+    {
+        "title" : "The Last Judgment",
+        "artist": "Michelangelo",
+        "file_name"  : "Last_Judgement_(Michelangelo).jpg",
+        "date" : 1541,
+        "classification": "Fresco",
+        "dimensions": "13.7 x 12 m"
+    },
+    {
+        "title" : "Las Meninas",
+        "artist": "Diego Velázquez",
+        "file_name"  : "1024px-Las_Meninas,_by_Diego_Velázquez,_from_Prado_in_Google_Earth.jpg",
+        "date" : 1656,
+        "classification": "Oil on canvas",
+        "dimensions": "318 x 276 cm"
+    },
+    {
+        "title" : "Self Portrait Facing Death",
+        "artist": "Pablo Picasso",
+        "file_name"  : "pablo-picasso--self-portrait-facing-death.jpg",
+        "date" : 1972,
+        "classification": "Pencil and crayon on paper",
+        "dimensions": "65.7 x 50.5 cm",
+        "comments": "Pablo Picasso was 90 years old when he drew this self portrait in crayon."
+    },
+    {
+        "title" : "The Voyage of Life: Childhood",
+        "artist": "Thomas Cole",
+        "file_name"  : "1920px-Thomas_Cole_-_The_Voyage_of_Life_Childhood,_1842_(National_Gallery_of_Art).jpg",
+        "date" : 1842,
+        "classification": "Oil on canvas",
+        "dimensions": "133 x 198 cm"
+    },
+    {
+        "title" : "The Voyage of Life: Youth",
+        "artist": "Thomas Cole",
+        "file_name"  : "Thomas_Cole_-_The_Ages_of_Life_-_Youth_-_WGA05140.jpg",
+        "date" : 1842,
+        "classification": "Oil on canvas",
+        "dimensions": "134 x 194 cm"
+    },
+    {
+        "title" : "The Voyage of Life: Manhood",
+        "artist": "Thomas Cole",
+        "file_name"  : "Thomas_Cole,_The_Voyage_of_Life,_1842,_National_Gallery_of_Art.jpg",
+        "date" : 1842,
+        "classification": "Oil on canvas",
+        "dimensions": "132.8 x 198.1 cm"
+    },
+    {
+        "title" : "The Voyage of Life: Old Age",
+        "artist": "Thomas Cole",
+        "file_name"  : "1920px-Thomas_Cole_-_The_Voyage_of_Life_Old_Age,_1842_(National_Gallery_of_Art).jpg",
+        "date" : 1842,
+        "classification": "Oil on canvas",
+        "dimensions": "133.4 x 196.2 cm"
+    },
+    {
+        "title" : "Utah Teapot",
+        "artist": "Martin Newell",
+        "file_name"  : "Utah_teapot_simple_2.png",
+        "date" : 1975,
+        "classification": "Digital",
+        "dimensions": "None"
+    },
+    {
+        "title" : "Fallingwater",
+        "artist": "Frank Lloyd Wright",
+        "file_name"  : "Fallingwater_-_DSC05639.jpeg",
+        "date" : 1939,
+        "classification": "Architecture"
+    },
+    {
+        "title" : "A Pile of Crowns for Jean-Michel Basquiat",
+        "artist": "Keith Haring",
+        "file_name"  : "keithharing.jpg",
+        "date" : 1988,
+        "classification": "Acrylic on canvas",
+        "dimensions": "270 x 300 cm"
+    },
+    {
+        "title" : "Barrack Obama",
+        "artist": "Kehinde Wiley",
+        "file_name"  : "Cunningham-Obama-Kehinde-Wiley.jpg",
+        "date" : 2018,
+        "classification": "Oil on canvas",
+        "dimensions": "213.7 x 147 cm"
+    },
+    {
+        "title" : "727",
+        "artist": "Takashi Murakami",
+        "file_name"  : "cri_000000159203.jpg",
+        "date" : 1996,
+        "classification": "Acrylic on canvas mounted on board, three panels",
+        "dimensions": "299.7 x 449.6 cm"
+    },
+    {
+        "title" : "An Homage to IKB 1957",
+        "artist": "Takashi Murakami",
+        "file_name"  : "takashi_murakami_an_homage_to_ikb_blue_1957_2020.jpg",
+        "date" : 2011,
+        "classification": "Offset print with cold stamp",
+        "dimensions": "74 x 53 cm"
+    },
+    {
+        "title" : "The Most Beautiful Suicide",
+        "artist": "Robert Wiles",
+        "file_name"  : "sucig2.jpg",
+        "date" : 1947,
+        "classification": "Photography"
+    },
+    {
+        "title" : "Oedipus",
+        "artist": "Hermann Nitsh",
+        "file_name"  : "tumblr_mv8dhqFDcb1s3wwu1o2_640.jpg",
+        "date" : 1990,
+        "classification": "Sculpture"
+    },
+    {
+        "title" : "Figures of Speech",
+        "artist": "Virgil Abloh",
+        "file_name"  : "virgil-abloh-figures-of-speech-museum-of-contemporary-art-chicago-exhibit-8-1.jpg",
+        "date" : 2019
+    },
+    {
+        "title" : "Boy and dog in a Johnnypump",
+        "artist": "Jean-Michel Basquiat",
+        "file_name"  : "boy-and-dog-in-a-johnnypump.jpg",
+        "date" : 1982,
+        "classification": "Oil on canvas",
+        "dimensions": "240 x 420 cm"
+    }
+]
