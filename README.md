@@ -4,6 +4,8 @@ Website with the goal of allowing users to search through various different cult
 Various Open APIs will be used in the creation of this tool with the MET's being the only one implemented so far. 
 Plan to also make use of the Art Institute of Chicago's and the MoMa's APIs as well.
 
+This website was created with the use of React. This is my first React project so some of the code may be unoptimal but will be update as needed.
+
 ## Available Scripts
 
 In the project directory, you can run:
