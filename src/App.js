@@ -137,7 +137,7 @@ class App extends React.Component {
           <div>
             <img src={`${process.env.PUBLIC_URL}/assets/spinning-ball.png`} alt=""/>
           </div>
-          <h2>Loading Photos</h2>
+          {/** <h2>Loading Photos</h2> **/}
         </div>
         
 
@@ -149,11 +149,11 @@ class App extends React.Component {
         {/* footer of the page */}
         <div id="footer">
           { !this.state.isLocal && <div>
-            <img style={{width: '100px' , height: '100px'}} src={`${process.env.PUBLIC_URL}/assets/MetLogo.svg`} alt="Thank you to the MET" height={'100'} width={'100'}/>
+            <img style={{width: '50px' , height: '50px'}} src={`${process.env.PUBLIC_URL}/assets/MetLogo.svg`} alt="Thank you to the MET" height={'100'} width={'100'}/>
           </div>}
 
           <div>
-            <p style={{marginBottom: '0px', fontSize: '14px', width: '100%'}}>Jake Bukuts 2021</p>
+            <p style={{marginBottom: '0px', fontSize: '14px', width: '100%'}}><b>Created by Jake Bukuts 2021</b></p>
           </div>
         </div>
       </div>
@@ -183,9 +183,9 @@ function createSingleImage(x,i, thing) {
         </div>
         
         <div style={{display: 'flex'}}>
-          <div className={"banner-left"}  style={{height: '55px', width: '180px'}}></div>
-          <div className={"banner-mid"}   style={{height: '55px', width: 'calc(100% - 331px)'}}></div>
-          <div className={"banner-right"} style={{height: '55px', width: '151px'}}></div>
+          <div className={"banner-left"}></div>
+          <div className={"banner-mid"}></div>
+          <div className={"banner-right"}></div>
         </div>
         <img src={x.file_name} alt="" onMouseEnter={showWorkInfo} onMouseLeave={removeWorkInfo} onClick={(e)=> thing.showGoodLook(e,x)}/>
     </div>
@@ -207,27 +207,39 @@ function getLocalArtList() {
 async function getRandomArtList() {
   let url = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=painting';
   
+  // first get all matching ids
   return await fetch(url)
     .then(r => r.json())
     .then(async (r) => {
       const total = r.total;
-      let works = [];
+      const numberWorks = 20;
+      let workPromises = [...Array(numberWorks)];
 
-      for (let i = 0; i < 15; ++i) {
+      // simple function to create art URL
+      let createURL = (objectId) => `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`;
+
+      // create promises for each work
+      workPromises.forEach((v, i) => {
         let id = Math.floor(Math.random() * (total-1));
-        await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${r.objectIDs[id]}`)
-          .then(r => r.json())
-          .then(r => {
-            r['date'] = (r.artistDisplayName) !== '' ? r.objectDate : 'Unknown';
-            r['file_name'] = r.primaryImage;
-            r['artist'] = (r.artistDisplayName) !== '' ? r.artistDisplayName : 'Unknown';
-            r['comments'] = (r.medium) !== '' ? r.medium : 'N/A';
-            r['title'] = r.title.length > 50 ? `${r.title.substring(0,50)}` : r.title;
-            works.push(r);
-        });
-      }
+        console.log(i);
+        workPromises[i] = fetch(createURL(r.objectIDs[id])).then(r => r.json());
+      });
 
-      return works;
+      console.log(workPromises);
+
+      // resolve all promises and return the list of works
+      return Promise.all(workPromises).then((vals) => {
+        vals.forEach((r) => {
+          // add relevant data
+          r['date'] = (r.artistDisplayName) !== '' ? r.objectDate : 'Unknown';
+          r['file_name'] = r.primaryImage;
+          r['artist'] = (r.artistDisplayName) !== '' ? r.artistDisplayName : 'Unknown';
+          r['comments'] = (r.medium) !== '' ? r.medium : 'N/A';
+          r['title'] = r.title.length > 50 ? `${r.title.substring(0,50)}` : r.title;
+        });
+
+        return vals;
+      });
     });
 }
 

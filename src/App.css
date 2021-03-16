@@ -86,8 +86,9 @@ button {
   border-radius: 5px;
   color: white;
   border: 1px solid #1b6bf9;
-  margin-right: 10px;
+  margin-right: 5px;
   transition: .25s opacity;
+  font-size: 12px;
 }
 
 button:hover {
@@ -128,12 +129,18 @@ button:disabled {
   position: absolute;
 }
 
+.banner-left, .banner-mid, .banner-right {
+  transition: .15s ease-in width;
+}
+
 .banner-left::before {
   background-image: url(https://static.tumblr.com/ly7no2u/F4yogrkra/header-preview-left.png);
   background-position: top left;
 }
 
 .banner-left{
+  height: 55px;
+  width: 180px;;
   position: relative;
   border-radius: 5px 0px 0px 0px;
 }
@@ -144,19 +151,23 @@ button:disabled {
 }
 
 .banner-right {
+  height: 55px;
+  width: 151px;
   position: relative;
   border-radius: 0px 5px 0px 0px;
 }
 
 .banner-mid::before {
   background-image: url(https://static.tumblr.com/ly7no2u/N3Mogrkha/header-preview.png);
-  background-position: top left;
+  background-position: top center;
   background-repeat: repeat-x;
 }
 
 .banner-mid {
   position: relative;
   perspective: 1px;
+  height: 55px; 
+  width: calc(100% - 331px);
 }
 
 /** file name div **/
@@ -194,8 +205,8 @@ button:disabled {
 #footer {
   position: relative; 
   width: 100%;
-  height: 100px;
-  margin-top: 70px;
+  height: 75px;
+  margin-top: 30px;
 }
 
 /** div containing MET logo **/
@@ -219,6 +230,7 @@ button:disabled {
   text-align: right;
 }
 
+
 /** loading div **/
 #loading {
   margin: auto;
@@ -238,7 +250,7 @@ button:disabled {
 /** add shadow to beach ball **/
 #loading > div::before {
   border-radius:50%;
-  box-shadow: 5px 5px 10px rgb(0, 0, 0, 1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.39);
   width: 70px;
   height: 70px;
   top: 0; right: 0; left: 0;
@@ -335,6 +347,24 @@ button:disabled {
   -webkit-column-count: 1;
   column-count:         1;
   }
+  .banner-mid {
+    width: calc(100% - 281px);;
+  }
+  .banner-left {
+    width: 130px;;
+  }
+}
+
+@media (max-width: 500px) {
+  .banner-mid {
+    width: calc(100% - 220px);;
+  }
+  .banner-right {
+    width: 90px;
+  }
+  #root p:nth-child(2) {
+    font-size: 70%;
+  }
 }
 
 @keyframes fadeInAnimation { 
@@ -347,3 +377,6 @@ button:disabled {
       filter: blur(0px);
    } 
 } 
+
+
+

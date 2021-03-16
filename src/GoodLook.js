@@ -13,6 +13,15 @@ class GoodLook extends React.Component {
       $(".in-depth").fadeTo('250ms', 1);
       $(".info").fadeTo('250ms', 1);
     }
+
+    handleDrag(tag) {
+      const isInfo = tag === '.in-depth' ? false : true;
+      const front = isInfo ? $('.info') : $('.in-depth');
+      const back = !isInfo ? $('.info') : $('.in-depth');
+
+      back.css('z-index', 100);
+      front.css('z-index', 101);
+    }
   
     // show the detailed view
     render() {
@@ -102,10 +111,10 @@ class GoodLook extends React.Component {
           <div id="backdrop" onClick={this.props.handleRemove}></div>
   
           {/* The actual full view of the image */}
-          <Draggable defaultPosition={{x: 100, y: 50}} cancel=".react-transform-component">
+          <Draggable cancel=".react-transform-component" onStart={() => this.handleDrag('.in-depth')} bounds="body">
             <div className={"in-depth"}>     
               <div className={"banner-mid"}   style={{height: '25px', width: '100%', textAlign: 'center', fontSize: '10px'}}>
-                <p style={{paddingTop: '8px', margin: '0px'}}>{fileName}</p>
+                <p style={{paddingTop: '8px', margin: 'auto', textOverflow: 'ellipsis', width: '20%', whiteSpace: 'nowrap', overflow: 'hidden', textAlign: 'center'}}>{fileName}</p>
   
                 <div style={{position: 'relative', display: 'flex', marginTop: '-16px'}}>
                   <div className={'top-button'} style={{backgroundColor: '#FC5753', marginLeft: '5px', border: '1px solid #E03e3b'}}></div>
@@ -117,18 +126,19 @@ class GoodLook extends React.Component {
               {/* allow for zoom on the image */}
               <TransformWrapper>
                 <TransformComponent>
-                  <img src={this.props.focusImage.file_name} alt="" style={{marginBottom: '-6px'}}/>
+                  <div>
+                    <img src={this.props.focusImage.file_name} alt="" style={{marginBottom: '-6px'}}/>
+                  </div>
                 </TransformComponent>
               </TransformWrapper>
             </div>
           </Draggable>
   
           {/* the info window on the image */}
-          <Draggable defaultPosition={{x: window.innerWidth-500, y: 500}}>
+          <Draggable onStart={() => this.handleDrag('.info')} bounds="body">
             <div className={'info'} style={{borderCollapse: 'separate'}}>
               <div className={"banner-mid"}   style={{height: '25px', width: '100%', textAlign: 'center', fontSize: '10px', position: 'relative'}}>
-                <div className={"icon"} style={{margin: '0px', position: 'absolute', top: '50%', transform: 'translateY(-50%)'}}></div>
-                <div>Image Info</div>
+                <div style={{marginTop: '0px', position: 'relative', top: '7px'}}>Image Info</div>
               </div>
             
               <div style={{paddingRight: '7px', paddingLeft: '7px', marginTop: '10px', fontSize: '11px', wordWrap: 'break-word'}}>
