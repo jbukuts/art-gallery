@@ -3,16 +3,20 @@ import './App.css';
 import art from './art.json';
 import $ from 'jquery';
 import GoodLook from './GoodLook.js';
+import'./GetArt.js';
+import {getRandomArtList} from './GetArt.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageList: null,
+      imageList: [],
       imageFocus: null,
       showGoodLook: false,
       isLocal: true
     };
+
+    console.log(this.state.imageList);
 
     // bind some handlers
     this.removeGoodLook = this.removeGoodLook.bind(this);
@@ -25,6 +29,8 @@ class App extends React.Component {
     await this.setState({
       imageList: await CreateImageCollage(this, this.state.isLocal)
     });
+
+    
 
     window.addEventListener('keydown', this.downHandler);
   }
@@ -89,7 +95,7 @@ class App extends React.Component {
       return;
 
     // get current index of focued image
-    let index = this.state.imageList.findIndex((i) => i[1].title === this.state.imageFocus.title);
+    let index = this.state.imageList.findIndex((i) => i[1] === this.state.imageFocus);
 
     // figure out what key was pressed
     // ensure 
@@ -120,14 +126,17 @@ class App extends React.Component {
         </span>
         
         <p style={{marginTop: '0px'}}>
-          This is just a collection of art I like.<br/>
-          Thought it'd be nice to see them all in one place.<br/>
-          I do not own any of them of course.
+          This is just a collection of art.<br/>
+          Thought it would be nice to see them in one place.<br/>
+          Random works are provided by The Art Institute of Chicago and The MET.<br/>
+          I do not own any of these of course.
         </p>
 
         {/* buttons to pull from MET */}
-        <button className={'swapButton'} onClick={() => this.flipImages(!this.state.isLocal)}>{this.state.isLocal ? 'Random MET' : 'Back to Mine'}</button>
-        {!this.state.isLocal && <button className={'swapButton'} onClick={() => this.flipImages(this.state.isLocal)}>Get different from MET</button>}
+        <button className={'swapButton'} onClick={() => this.flipImages(!this.state.isLocal)}>{this.state.isLocal ? 'Random Works' : 'My Choices'}</button>
+        {!this.state.isLocal && <button className={'swapButton'} onClick={() => this.flipImages(this.state.isLocal)}>Shuffle Random</button>}
+
+        <input type="text"/>
 
         <br/>
         <br/>
@@ -149,7 +158,8 @@ class App extends React.Component {
         {/* footer of the page */}
         <div id="footer">
           { !this.state.isLocal && <div>
-            <img style={{width: '50px' , height: '50px'}} src={`${process.env.PUBLIC_URL}/assets/MetLogo.svg`} alt="Thank you to the MET" height={'100'} width={'100'}/>
+            <img style={{width: '50px' , height: '50px', marginRight: '10px'}} src={`${process.env.PUBLIC_URL}/assets/MetLogo.svg`} alt="Thank you to the MET" height={'100'} width={'100'}/>
+            <img style={{width: '50px' , height: '50px'}} src={`${process.env.PUBLIC_URL}/assets/AICLogo.svg`} alt="Thank you to the MET" height={'100'} width={'100'}/>
           </div>}
 
           <div>
@@ -163,7 +173,7 @@ class App extends React.Component {
 
 // create the image collage
 async function CreateImageCollage(thing, isLocal) {
-  const imageList =  isLocal ? getLocalArtList() : await getRandomArtList();
+  const imageList =  isLocal ? getLocalArtList() : shuffleArray(await getRandomArtList());
   return imageList.map(
     (x,i) => {
       return [createSingleImage(x,i,thing), x]
@@ -173,13 +183,18 @@ async function CreateImageCollage(thing, isLocal) {
 
 // creates a single image to display in list
 function createSingleImage(x,i, thing) {
+  console.log(x['title']);
+  const noSpace = /\s+/g;
+
   return (
     <div className={"work"} key={i}>
         <div className={"meta"}>
-          <div className={"icon"}></div>
-          <div className={"file-name"}>
-            <a href={`https://www.google.com/search?q=${x.title} ${x.artist}`} target="_blank" rel="noreferrer">{x.title.replaceAll(' ', '_').toLowerCase()}.jpg</a>
-          </div>
+          { /** <div className={"icon"}></div> **/}
+          { x !== undefined &&
+            <a className={"file-name"} href={`https://www.google.com/search?q=${x['title']} ${x['artist']}`} target="_blank" rel="noreferrer">
+              {x['title'].replace(noSpace, '_').toLowerCase()}.jpg
+            </a>
+          }
         </div>
         
         <div style={{display: 'flex'}}>
@@ -200,47 +215,6 @@ function getLocalArtList() {
     const x = acc.find(item => item.artist === current.artist);
       return !x ? acc.concat([current]) : acc;
   }, []).map(x => {x.file_name = `${process.env.PUBLIC_URL}/assets/art/${x.file_name}`; return x});
-}
-
-
-// pull random image data from the MET 
-async function getRandomArtList() {
-  let url = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=painting';
-  
-  // first get all matching ids
-  return await fetch(url)
-    .then(r => r.json())
-    .then(async (r) => {
-      const total = r.total;
-      const numberWorks = 20;
-      let workPromises = [...Array(numberWorks)];
-
-      // simple function to create art URL
-      let createURL = (objectId) => `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`;
-
-      // create promises for each work
-      workPromises.forEach((v, i) => {
-        let id = Math.floor(Math.random() * (total-1));
-        console.log(i);
-        workPromises[i] = fetch(createURL(r.objectIDs[id])).then(r => r.json());
-      });
-
-      console.log(workPromises);
-
-      // resolve all promises and return the list of works
-      return Promise.all(workPromises).then((vals) => {
-        vals.forEach((r) => {
-          // add relevant data
-          r['date'] = (r.artistDisplayName) !== '' ? r.objectDate : 'Unknown';
-          r['file_name'] = r.primaryImage;
-          r['artist'] = (r.artistDisplayName) !== '' ? r.artistDisplayName : 'Unknown';
-          r['comments'] = (r.medium) !== '' ? r.medium : 'N/A';
-          r['title'] = r.title.length > 50 ? `${r.title.substring(0,50)}` : r.title;
-        });
-
-        return vals;
-      });
-    });
 }
 
 // grey out all except for one

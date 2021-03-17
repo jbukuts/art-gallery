@@ -27,7 +27,7 @@ class GoodLook extends React.Component {
     render() {
   
       // stuff to display
-      let fileName = `${this.props.focusImage.title.replaceAll(' ', '_').toLowerCase()}.jpg`;
+      let fileName = `${this.props.focusImage.title.replace(/\s+/g, '_').toLowerCase()}.jpg`;
       let d = new Date();
       let months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novemver', 'December'];
       let timeString = d.getHours() > 12 ? `${d.getHours()-12}:${d.getMinutes()} PM` : `${d.getHours()}:${d.getMinutes()} AM`;
@@ -105,16 +105,28 @@ class GoodLook extends React.Component {
         });
       }
 
+      const bannerStyling = {
+        height: '25px', 
+        width: '100%', 
+        textAlign: 'center', 
+        fontSize: '10px', 
+        backgroundImage: 'url(https://static.tumblr.com/ly7no2u/N3Mogrkha/header-preview.png)', 
+        backgroundPosition: 'top center', 
+        backgroundRepeat: 'repeat-x',
+        borderRadius: '4px 4px 0px 0px',
+        position: 'relative'
+      };
+
       return (
         <div>
           {/* This will blur the background */}
           <div id="backdrop" onClick={this.props.handleRemove}></div>
-  
+
           {/* The actual full view of the image */}
           <Draggable cancel=".react-transform-component" onStart={() => this.handleDrag('.in-depth')} bounds="body">
             <div className={"in-depth"}>     
-              <div className={"banner-mid"}   style={{height: '25px', width: '100%', textAlign: 'center', fontSize: '10px'}}>
-                <p style={{paddingTop: '8px', margin: 'auto', textOverflow: 'ellipsis', width: '20%', whiteSpace: 'nowrap', overflow: 'hidden', textAlign: 'center'}}>{fileName}</p>
+              <div style={bannerStyling}>
+                <p style={{paddingTop: '8px', margin: 'auto', textOverflow: 'ellipsis', width: '40%', whiteSpace: 'nowrap', overflow: 'hidden', textAlign: 'center'}}>{fileName}</p>
   
                 <div style={{position: 'relative', display: 'flex', marginTop: '-16px'}}>
                   <div className={'top-button'} style={{backgroundColor: '#FC5753', marginLeft: '5px', border: '1px solid #E03e3b'}}></div>
@@ -124,7 +136,7 @@ class GoodLook extends React.Component {
               </div>
   
               {/* allow for zoom on the image */}
-              <TransformWrapper>
+              <TransformWrapper onPanningStart={() => this.handleDrag('.in-depth')}>
                 <TransformComponent>
                   <div>
                     <img src={this.props.focusImage.file_name} alt="" style={{marginBottom: '-6px'}}/>
@@ -137,7 +149,7 @@ class GoodLook extends React.Component {
           {/* the info window on the image */}
           <Draggable onStart={() => this.handleDrag('.info')} bounds="body">
             <div className={'info'} style={{borderCollapse: 'separate'}}>
-              <div className={"banner-mid"}   style={{height: '25px', width: '100%', textAlign: 'center', fontSize: '10px', position: 'relative'}}>
+              <div style={bannerStyling}>
                 <div style={{marginTop: '0px', position: 'relative', top: '7px'}}>Image Info</div>
               </div>
             

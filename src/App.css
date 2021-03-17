@@ -47,14 +47,44 @@ body {
   animation-iteration-count: 1; 
 }
 
-/** file name on main view **/
-.meta .file-name > a {
-  text-decoration: none;
-  color: black;
+/** file name div **/
+.meta {
+  position: relative;
+  top: 16px;
+  margin-top: -10px;
+  text-align: center;
+  z-index: 2;
 }
 
+/** actual file name tag **/
+.file-name {
+  line-height: 10px;
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 10px;
+  width: fit-content;
+  max-width: 80%;
+  overflow: hidden;
+}
+
+/** image icon **/
+.icon {
+  display: inline-block;
+  margin-right: 5px;
+  width: 12px;
+  height: 15px;
+  background-size: 12px auto;
+  background-repeat: no-repeat;
+  background-image: url(https://static.tumblr.com/ly7no2u/S6hogrlck/image-icon.png);
+}
+
+
+
 /** file name on main view **/
-.meta .file-name > a:hover {
+.file-name:hover {
   text-decoration: underline;
 }
 
@@ -99,6 +129,13 @@ button:disabled {
   opacity: .35;
 }
 
+input {
+  border: 1px solid #686868;
+  border-radius: 5px;
+  height: 30px;
+  display: none;
+}
+
 /** a single div containg piece **/
 .work {
   -webkit-transition : -webkit-filter 500ms linear all 500ms;
@@ -136,25 +173,29 @@ button:disabled {
 .banner-left::before {
   background-image: url(https://static.tumblr.com/ly7no2u/F4yogrkra/header-preview-left.png);
   background-position: top left;
+  border-radius: 5px 0px 0px 0px;
+  -webkit-border-radius: 5px 0px 0px 0px;
+  -moz-border-radius: 5px 0px 0px 0px;
 }
 
 .banner-left{
   height: 55px;
   width: 180px;;
   position: relative;
-  border-radius: 5px 0px 0px 0px;
 }
 
 .banner-right::before {
   background-image: url(https://static.tumblr.com/ly7no2u/ji1ogrkhf/header-preview-right.png);
   background-position: top right;
+  border-radius: 0px 5px 0px 0px;
+  -webkit-border-radius: 0px 5px 0px 0px;
+  -moz-border-radius: 0px 5px 0px 0px;
 }
 
 .banner-right {
   height: 55px;
   width: 151px;
   position: relative;
-  border-radius: 0px 5px 0px 0px;
 }
 
 .banner-mid::before {
@@ -169,37 +210,6 @@ button:disabled {
   height: 55px; 
   width: calc(100% - 331px);
 }
-
-/** file name div **/
-.meta {
-  position: relative;
-  top: 17px;
-  text-align: center;
-  margin-top: -15px;
-  z-index: 1;
-}
-
-/** actual file name tag **/
-.file-name {
-  position: relative;
-  top: -3px;
-  display: inline-block;
-  font-size: 10px;
-  text-align: center;
-}
-
-/** image icon **/
-.icon {
-  display: inline-block;
-  margin-right: 5px;
-  width: 12px;
-  height: 15px;
-  background-size: 12px auto;
-  background-repeat: no-repeat;
-  background-image: url(https://static.tumblr.com/ly7no2u/S6hogrlck/image-icon.png);
-}
-
-
 
 /** footer for the page **/
 #footer {
@@ -355,7 +365,7 @@ button:disabled {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 690px) {
   .banner-mid {
     width: calc(100% - 220px);;
   }
@@ -376,7 +386,4 @@ button:disabled {
       opacity: 1;
       filter: blur(0px);
    } 
-} 
-
-
-
+}
